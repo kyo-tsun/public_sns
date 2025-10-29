@@ -1,14 +1,25 @@
-# Welcome to your CDK TypeScript project
+# Public SNS Topic with Access Policy
 
-This is a blank project for CDK development with TypeScript.
+AWS CDKを使用してパブリックアクセス可能なSNSトピックを作成するプロジェクトです。
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+## ⚠️ 注意事項
 
-## Useful commands
+このSNSトピックは**パブリックアクセスポリシー**を持っています。
+- 任意のAWSアカウントからPublish/Subscribeが可能です
+- 本番環境での使用には十分注意してください
+- 必要に応じてアクセス制限を追加することを推奨します
 
-* `npm run build`   compile typescript to js
-* `npm run watch`   watch for changes and compile
-* `npm run test`    perform the jest unit tests
-* `npx cdk deploy`  deploy this stack to your default AWS account/region
-* `npx cdk diff`    compare deployed stack with current state
-* `npx cdk synth`   emits the synthesized CloudFormation template
+## アーキテクチャ
+
+![Architecture](drawio/architecture.png)
+
+## デプロイ
+
+```bash
+git clone https://github.com/kyo-tsun/public_sns.git
+cd public_sns
+npm install
+npm run build
+npx cdk bootstrap
+npx cdk deploy
+```
